@@ -1,42 +1,112 @@
 body {
   font-family: Arial, sans-serif;
+  background-color: #e6f7ff; 
+  color: #333; 
+  margin: 0;
+  padding: 0;
 }
 
 header {
-  background-color: #f4f4f4;
+  background-color: #cceeff; 
+  padding: 15px 20px;
+  text-align: center;
+  border-bottom: 2px solid #99ddff;
+}
+
+header button {
+  background-color: #66b3ff; 
+  border: none;
+  color: white;
   padding: 10px 20px;
-  text-align: center;
+  margin: 0 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
 }
 
-#author-form {
-  margin: 20px;
-  text-align: center;
+header button:hover {
+  background-color: #3399ff; 
 }
 
-#book-form {
-  margin: 20px;
+#author-form, #book-form {
+  margin: 20px auto;
+  padding: 20px;
   text-align: center;
+  background-color: white; 
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  max-width: 400px; 
 }
 
 input[type="text"] {
-  padding: 8px;
-  width: 200px;
-  margin-right: 10px;
+  padding: 10px;
+  width: calc(100% - 22px); 
+  margin-bottom: 10px;
+  border: 1px solid #99ddff;
+  border-radius: 5px;
+}
+
+select {
+  padding: 10px;
+  width: calc(100% - 22px); 
+  margin-bottom: 10px;
+  border: 1px solid #99ddff;
+  border-radius: 5px;
 }
 
 button {
-  padding: 10px;
+  background-color: #66b3ff; 
+  border: none;
+  color: white;
+  padding: 10px 20px;
   cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #3399ff; 
 }
 
 ul {
   list-style-type: none;
   padding: 0;
+  max-width: 600px; 
+  margin: 20px auto;
 }
 
 li {
-  padding: 8px;
-  margin-top: 5px;
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #e6f7ff; 
+  border: 1px solid #99ddff;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.li-content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.li-buttons {
+  display: flex;
+  gap: 10px; 
+}
+
+li button {
+  background-color: #66b3ff; 
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+li button:hover {
+  background-color: #3399ff; 
 }
