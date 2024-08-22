@@ -17,11 +17,9 @@ const authors = [
 test('renders EditBookDialog with book details', () => {
   render(<EditBookDialog book={book} authors={authors} submitEditBook={jest.fn()} closeDialog={jest.fn()} />);
 
-  // Sprawdzenie, czy pola formularza są wypełnione danymi książki
   expect(screen.getByLabelText('Book Title:')).toHaveValue(book.title);
   expect(screen.getByLabelText('Book Author:')).toHaveValue(book.author._id);
 
-  // Sprawdzenie, czy opcje autorów są wyświetlane
   authors.forEach(author => {
     expect(screen.getByText(author.name)).toBeInTheDocument();
   });
@@ -33,14 +31,11 @@ test('submits the edited book details', async () => {
 
   render(<EditBookDialog book={book} authors={authors} submitEditBook={submitEditBook} closeDialog={jest.fn()} />);
 
-  // Edycja tytułu książki
   await user.clear(screen.getByLabelText('Book Title:'));
   await user.type(screen.getByLabelText('Book Title:'), 'Updated Book Title');
 
-  // Zmiana autora
   await user.selectOptions(screen.getByLabelText('Book Author:'), '2');
 
-  // Kliknięcie przycisku "Save Changes"
   await user.click(screen.getByText('Save Changes'));
 
   expect(submitEditBook).toHaveBeenCalledWith(book._id, 'Updated Book Title', '2');
@@ -52,7 +47,6 @@ test('cancels editing the book', async () => {
 
   render(<EditBookDialog book={book} authors={authors} submitEditBook={jest.fn()} closeDialog={closeDialog} />);
 
-  // Kliknięcie przycisku "Cancel"
   await user.click(screen.getByText('Cancel'));
 
   expect(closeDialog).toHaveBeenCalled();
