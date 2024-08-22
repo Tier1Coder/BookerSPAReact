@@ -13,16 +13,13 @@ test('renders AuthorList and handles edit and delete', () => {
 
   render(<AuthorList authors={authors} editAuthor={editAuthor} deleteAuthor={deleteAuthor} />);
 
-  // Sprawdzenie, czy autorzy są wyświetlani
   expect(screen.getByText('Author 1')).toBeInTheDocument();
   expect(screen.getByText('Author 2')).toBeInTheDocument();
 
-  // Kliknięcie przycisku edycji
   window.prompt = jest.fn().mockImplementation(() => 'New Author 1');
   fireEvent.click(screen.getAllByText('Edit')[0]);
   expect(editAuthor).toHaveBeenCalledWith('1', 'New Author 1');
 
-  // Kliknięcie przycisku usuwania
   fireEvent.click(screen.getAllByText('Delete')[0]);
   expect(deleteAuthor).toHaveBeenCalledWith('1');
 });
