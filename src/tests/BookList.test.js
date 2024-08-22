@@ -23,7 +23,6 @@ const books = [
 test('renders BookList with book details', () => {
   render(<BookList books={books} editBook={jest.fn()} deleteBook={jest.fn()} />);
 
-  // Sprawdzenie, czy książki są wyświetlane z odpowiednimi tytułami i autorami
   books.forEach(book => {
     const authorName = book.author ? book.author.name : 'unknown';
     expect(screen.getByText(new RegExp(`${book.title} by ${authorName}`))).toBeInTheDocument();
@@ -34,11 +33,9 @@ test('edit button clicked', () => {
   const editBook = jest.fn();
   render(<BookList books={books} editBook={editBook} deleteBook={jest.fn()} />);
 
-  // Kliknięcie przycisku "Edit" dla pierwszej książki
   const editButtons = screen.getAllByText('Edit');
   fireEvent.click(editButtons[0]);
 
-  // Sprawdzenie, czy funkcja editBook została wywołana z odpowiednim argumentem
   expect(editBook).toHaveBeenCalledWith(books[0]);
 });
 
@@ -46,10 +43,8 @@ test('delete button clicked', () => {
   const deleteBook = jest.fn();
   render(<BookList books={books} editBook={jest.fn()} deleteBook={deleteBook} />);
 
-  // Kliknięcie przycisku "Delete" dla pierwszej książki
   const deleteButtons = screen.getAllByText('Delete');
   fireEvent.click(deleteButtons[0]);
 
-  // Sprawdzenie, czy funkcja deleteBook została wywołana z odpowiednim argumentem
   expect(deleteBook).toHaveBeenCalledWith(books[0]._id);
 });
